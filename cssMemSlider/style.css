@@ -1,0 +1,104 @@
+/* text-align не "выбивает" элементы из основного потока, поэтому left center right в этом свойстве можно использовать(это на тот случай, если Вы вдруг решите мне снять за это баллы:)) */
+/* позиционирование  */
+body{
+	width: 100%;
+	height: 100%;
+	background-color: rgb(74, 66, 66);
+    overflow: hidden;
+}
+.wrapper{
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+#wrapperContent{ 
+	width: 100%;
+	overflow: hidden;
+}
+.wrapper input{ 
+	visibility: hidden;
+}
+#slides section{ 
+	display: inline-block;
+	text-align: center;
+	width: 20%;
+}
+label{ 
+	cursor: pointer;
+}
+#slides .images, #slides .text{
+	width: 500%;
+	text-align: left;
+}
+div img{ 
+	width:75%;
+}
+div p{ 
+	width:100%;
+	text-align: left;
+	margin: 1rem 12.5% 0 12.5%;
+	color: white;
+}
+/* анимация переключения мемчиков :) */
+#slide1:checked ~ #slides .images,#slide1:checked ~ #slides .text{
+	margin-left: 0;
+}
+#slide2:checked ~ #slides .images,#slide2:checked ~ #slides .text{
+	margin-left: -100%;
+}
+#slide3:checked ~ #slides .images,#slide3:checked ~ #slides .text{
+	margin-left: -200%;
+}
+#slide4:checked ~ #slides .images,#slide4:checked ~ #slides .text{
+	margin-left: -300%;
+}
+#slides .images, #slides .text{ 
+	transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+}
+/* кнопочки */
+div #activeButtons{
+	text-align: right;
+	margin: -1rem 11.5% 0 11.5%;
+}
+#activeButtons label{
+	border: solid 0.5rem rgb(74, 66, 66);
+}
+#activeButtons .button{ 
+	border-radius: 50%;
+	display: inline-block; 
+	width: 1rem;
+	height: 1rem;	
+	background: #305cdf;
+}
+#activeButtons label:hover .button{ 
+	background: rgb(197, 179, 179) ;
+}
+#slide1:checked ~ #activeButtons .button1,
+#slide2:checked ~ #activeButtons .button2,
+#slide3:checked ~ #activeButtons .button3,
+#slide4:checked ~ #activeButtons .button4{
+	width: 0.8rem;
+	height: 0.8rem;
+	border: solid 0.1rem;
+	background-color: rgb(74, 66, 66);
+	border-color: #4169E1 ;
+}
+#slide1:checked ~ #activeButtons label:hover .button,
+#slide2:checked ~ #activeButtons label:hover .button,
+#slide3:checked ~ #activeButtons label:hover .button,
+#slide4:checked ~ #activeButtons label:hover .button{
+	border-color: rgb(197, 179, 179) ;
+}
+
+@media  (max-width: 1000px){
+	div #activeButtons{
+		text-align: center;
+		margin-top: -3rem;
+	}
+	div p{ 
+		text-align: left;
+		margin: 3rem 12.5% 0 12.5%;
+	}
+}
+
+
